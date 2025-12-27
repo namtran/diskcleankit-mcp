@@ -1,0 +1,89 @@
+{
+  "name": "diskcleankit",
+  "version": "4.1.0",
+  "description": "MCP server for DiskCleanKit - Mac disk cleaning with One Touch Clean",
+  "author": "Mitsoftwarelab",
+  "homepage": "https://diskcleankit.com",
+
+  "capabilities": {
+    "queries": [
+      {
+        "name": "disk_status",
+        "description": "Get current disk space status including total, free, used space and health status",
+        "url": "diskcleankit://mcp/disk_status",
+        "params": []
+      },
+      {
+        "name": "cleaning_history",
+        "description": "Get cleaning history and statistics from previous One Touch Clean sessions",
+        "url": "diskcleankit://mcp/cleaning_history",
+        "params": [
+          {
+            "name": "limit",
+            "type": "integer",
+            "description": "Maximum number of sessions to return (default: 20)",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "cleanable_estimate",
+        "description": "Estimate how much space can be cleaned with One Touch Clean",
+        "url": "diskcleankit://mcp/cleanable_estimate",
+        "params": []
+      }
+    ],
+    "actions": [
+      {
+        "name": "one_touch_scan",
+        "description": "Run DiskCleanKit One Touch Scan - scans for junk files (safe mode, nothing deleted). Always run this first.",
+        "url": "diskcleankit://mcp/action?name=one_touch_scan",
+        "primary": true
+      },
+      {
+        "name": "one_touch_clean",
+        "description": "Run DiskCleanKit One Touch Clean - cleans items from previous scan immediately (no confirmation). Run scan first and get user approval.",
+        "url": "diskcleankit://mcp/action?name=one_touch_clean"
+      }
+    ],
+    "exports": [
+      {
+        "name": "json",
+        "description": "Export cleaning history as JSON",
+        "format": "application/json"
+      },
+      {
+        "name": "csv",
+        "description": "Export cleaning history as CSV",
+        "format": "text/csv"
+      }
+    ]
+  },
+
+  "response_location": {
+    "clipboard": true,
+    "temp_file": "/tmp/diskcleankit_mcp_response.json",
+    "description": "MCP responses are copied to clipboard and saved to temp file"
+  },
+
+  "url_scheme": "diskcleankit://",
+
+  "example_queries": [
+    {
+      "description": "Run One Touch Clean (auto scan and clean)",
+      "command": "open 'diskcleankit://mcp/action?name=one_touch_clean'"
+    },
+    {
+      "description": "Check disk space before cleaning",
+      "command": "open 'diskcleankit://mcp/disk_status'"
+    },
+    {
+      "description": "Estimate cleanable space",
+      "command": "open 'diskcleankit://mcp/cleanable_estimate'"
+    },
+    {
+      "description": "View cleaning history",
+      "command": "open 'diskcleankit://mcp/cleaning_history'"
+    }
+  ]
+}

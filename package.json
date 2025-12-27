@@ -1,0 +1,47 @@
+{
+  "name": "@namtran/diskcleankit-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for DiskCleanKit - One Touch Scan and Clean for Mac",
+  "author": "namtran",
+  "license": "MIT",
+  "homepage": "https://diskcleankit.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namtran/diskcleankit-mcp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "diskcleankit",
+    "mac",
+    "disk-cleaner",
+    "claude",
+    "ai-tools"
+  ],
+  "mcpName": "io.github.namtran/diskcleankit-mcp",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "diskcleankit-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
