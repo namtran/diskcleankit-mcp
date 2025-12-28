@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.namtran/diskcleankit-mcp",
+  "description": "MCP server for DiskCleanKit - One Touch Scan and Clean for Mac",
+  "repository": {
+    "url": "https://github.com/namtran/diskcleankit-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@vannamtran/diskcleankit-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
