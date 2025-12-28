@@ -31,7 +31,7 @@ npm run build
 
 ### Claude Desktop
 
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
 
 ```json
 {
@@ -44,12 +44,93 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 }
 ```
 
-### Other AI Apps
+Then restart Claude Desktop.
 
-Any AI app that supports MCP can use this server. Configure it to run:
+### Claude Code (CLI)
+
 ```bash
-npx @vannamtran/diskcleankit-mcp
+claude mcp add --transport stdio diskcleankit -- npx @vannamtran/diskcleankit-mcp
 ```
+
+Or edit `~/.claude/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "diskcleankit": {
+      "command": "npx",
+      "args": ["@vannamtran/diskcleankit-mcp"]
+    }
+  }
+}
+```
+
+### Cursor
+
+Add to `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (project-specific):
+
+```json
+{
+  "mcpServers": {
+    "diskcleankit": {
+      "command": "npx",
+      "args": ["@vannamtran/diskcleankit-mcp"]
+    }
+  }
+}
+```
+
+Or go to **Cursor Settings → Tools & Integrations → New MCP Server**.
+
+### VS Code (GitHub Copilot)
+
+Add to your `settings.json`:
+
+```json
+{
+  "mcp.servers": {
+    "diskcleankit": {
+      "command": "npx",
+      "args": ["@vannamtran/diskcleankit-mcp"]
+    }
+  }
+}
+```
+
+### Other MCP Clients
+
+| Client | Config File |
+|--------|-------------|
+| Cline | VS Code extension settings |
+| Windsurf | `~/.windsurf/mcp.json` |
+| Zed | `~/.config/zed/settings.json` |
+| Continue | `~/.continue/config.json` |
+
+Use the same configuration structure:
+
+```json
+{
+  "mcpServers": {
+    "diskcleankit": {
+      "command": "npx",
+      "args": ["@vannamtran/diskcleankit-mcp"]
+    }
+  }
+}
+```
+
+### Ollama (via mcphost)
+
+Ollama doesn't natively support MCP, but you can use [mcphost](https://github.com/chrishayuk/mcp-cli):
+
+```bash
+pip install mcphost
+mcphost -m ollama:qwen2.5 --config config.json
+```
+
+### Unsupported
+
+- **ChatGPT**: No native MCP support
 
 ## Available Tools
 
