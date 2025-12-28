@@ -1,6 +1,6 @@
 # DiskCleanKit MCP Server
 
-[![npm version](https://badge.fury.io/js/@mitsoftwarelab%2Fdiskcleankit-mcp.svg)](https://www.npmjs.com/package/@namtran/diskcleankit-mcp)
+[![npm version](https://badge.fury.io/js/@vannamtran%2Fdiskcleankit-mcp.svg)](https://www.npmjs.com/package/@vannamtran/diskcleankit-mcp)
 
 MCP (Model Context Protocol) server that enables AI assistants like Claude to control DiskCleanKit's **One Touch** feature for Mac disk cleaning.
 
@@ -15,7 +15,7 @@ MCP (Model Context Protocol) server that enables AI assistants like Claude to co
 ### Via npm (Recommended)
 
 ```bash
-npm install -g @namtran/diskcleankit-mcp
+npm install -g @vannamtran/diskcleankit-mcp
 ```
 
 ### From Source
@@ -38,7 +38,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "diskcleankit": {
       "command": "npx",
-      "args": ["@namtran/diskcleankit-mcp"]
+      "args": ["@vannamtran/diskcleankit-mcp"]
     }
   }
 }
@@ -48,7 +48,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 Any AI app that supports MCP can use this server. Configure it to run:
 ```bash
-npx @namtran/diskcleankit-mcp
+npx @vannamtran/diskcleankit-mcp
 ```
 
 ## Available Tools
